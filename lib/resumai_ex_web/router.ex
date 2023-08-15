@@ -22,6 +22,8 @@ defmodule ResumaiExWeb.Router do
 
   scope "/api" do
     pipe_through :api
+    forward "/graphiql", Absinthe.Plug.GraphiQL, schema: ResumeaiExWeb.Schema, interface: :simple
+
     forward "/", Absinthe.Plug, schema: ResumeaiExWeb.Schema
   end
 
