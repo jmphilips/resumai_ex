@@ -17,9 +17,11 @@ defmodule ResumaiEx.Application do
       # Start Finch
       {Finch, name: ResumaiEx.Finch},
       # Start the Endpoint (http/https)
-      ResumaiExWeb.Endpoint
+      ResumaiExWeb.Endpoint,
       # Start a worker by calling: ResumaiEx.Worker.start_link(arg)
       # {ResumaiEx.Worker, arg}
+      {ResumaiEx.Otp.TokenAgent, 0},
+      {ResumaiEx.Otp.UserAgent, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -50,7 +50,10 @@ defmodule ResumaiEx.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:absinthe_plug, "~> 1.5"}
+      {:absinthe_plug, "~> 1.5"},
+      {:joken, "~> 2.6"},
+      {:tesla, "~> 1.7"},
+      {:cors_plug, "~> 3.0"}
     ]
   end
 
