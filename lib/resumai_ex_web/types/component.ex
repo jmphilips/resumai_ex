@@ -3,6 +3,7 @@ defmodule ResumaiExWeb.Types.Component do
 
   object :component do
     field :id, :id
+    field :type, :string
     field :text, :string
     field :name, :string
   end

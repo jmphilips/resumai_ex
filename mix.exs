@@ -53,7 +53,8 @@ defmodule ResumaiEx.MixProject do
       {:absinthe_plug, "~> 1.5"},
       {:joken, "~> 2.6"},
       {:tesla, "~> 1.7"},
-      {:cors_plug, "~> 3.0"}
+      {:cors_plug, "~> 3.0"},
+      {:yaml_elixir, "~> 2.9"}
     ]
   end
 

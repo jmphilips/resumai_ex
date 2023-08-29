@@ -3,21 +3,15 @@ defmodule ResumaiExWeb.Resolvers.Workflow do
     %{
       :name => "Home",
       :title => "Welcome!",
+      :id => 1,
       :screens => [
-        %{
-          :name => "Home Screen",
-          :components => [
-            %{
-              :type => "Button",
-              :text => "Select a workflow"
-            }
-          ]
-        }
+        ResumaiExWeb.Resolvers.Screen.home()
       ]
     },
     %{
       :name => "Create User",
       :title => "Create a New User",
+      :id => 2,
       :screens => [
         %{
           :name => "Create User Screen",
@@ -36,7 +30,7 @@ defmodule ResumaiExWeb.Resolvers.Workflow do
   ]
 
   def list_all(_parent, _args, _resolution) do
-    {:ok, ResumaiEx.Workflow.Base.home()}
+    {:ok, @list_all_workflows}
   end
 
   def find(_parent, args, _resolution) do
