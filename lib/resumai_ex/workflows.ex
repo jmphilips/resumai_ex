@@ -16,6 +16,17 @@ defmodule ResumaiEx.Workflows do
   end
 
   def load_and_build do
-    FileUtils.load_workflows()
+    FileUtils.get_workflow_filenames()
+    |> yaml_mapper()
+  end
+
+  def yaml_mapper({:ok, file_paths_list}) do
+    {:ok,
+     Enum.map(file_paths_list, fn file_path ->
+       case YamlElixir.read_from_file(file_path) do
+         {:ok, yaml} -> yaml
+         {:error, error} -> error
+       end
+     end)}
   end
 end
