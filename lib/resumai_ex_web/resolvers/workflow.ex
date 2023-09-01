@@ -1,4 +1,6 @@
 defmodule ResumaiExWeb.Resolvers.Workflow do
+  alias ResumaiEx.Workflows
+
   @list_all_workflows [
     %{
       :name => "Home",

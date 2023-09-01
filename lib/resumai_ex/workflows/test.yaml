@@ -1,5 +1,0 @@
-workflow:
-  name: Home
-  screens:
-    screen:
-      name: Home

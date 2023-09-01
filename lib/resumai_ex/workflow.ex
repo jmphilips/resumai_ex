@@ -3,7 +3,7 @@ defmodule ResumaiEx.Workflow do
   Base for Workflows
   """
   alias ResumaiEx.{Workflow, Screen}
-  defstruct [:name, :id, screens: [], errors: []]
+  defstruct [:id, :name, :title, screens: []]
 
   def new, do: {:ok, %Workflow{}}
 
@@ -17,5 +17,10 @@ defmodule ResumaiEx.Workflow do
 
   def add_screen({:ok, %Workflow{screens: screens} = workflow}, %Screen{} = screen) do
     {:ok, %Workflow{workflow | screens: [screen | screens]}}
+  end
+
+  @spec build_from_yaml(any) :: %Workflow{}
+  def build_from_yaml(%{"workflow" => %{"name" => name, "id" => id, "screens" => screens}}) do
+    %Workflow{name: name, id: id, screens: screens}
   end
 end

@@ -16,14 +16,14 @@ defmodule ResumaiEx.WorkflowsTest do
     end
   end
 
-  describe("yaml_mapper/1") do
+  describe("load_from_yaml_files/1") do
     test("is defined") do
-      output = Workflows.yaml_mapper(test_yaml_generator())
+      output = Workflows.load_from_yaml_files(test_yaml_generator())
       assert output
     end
 
     test("returns a result tuple") do
-      {status, result} = Workflows.yaml_mapper(test_yaml_generator())
+      {status, result} = Workflows.load_from_yaml_files(test_yaml_generator())
       assert status == :ok
 
       assert result == [

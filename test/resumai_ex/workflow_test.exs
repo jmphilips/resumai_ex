@@ -85,4 +85,13 @@ defmodule ResumaiEx.WorkflowTest do
     {_status, result} = Workflow.add_screen({:ok, workflow}, @new_screen)
     assert result == %Workflow{name: @workflow_name, screens: [@new_screen]}
   end
+
+  describe("build_from_yaml/1") do
+    test("returns a result tuple") do
+      input = %{"workflow" => %{"name" => "Home", "id" => 1, "screens" => []}}
+      {status, result} = Workflow.build_from_yaml(input)
+      assert status == :ok
+      assert result == %Workflow{name: "Home", id: 1, screens: []}
+    end
+  end
 end
