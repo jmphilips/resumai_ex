@@ -2,7 +2,7 @@ defmodule ResumaiEx.WorkflowsTest do
   use ExUnit.Case
   alias ResumaiEx.Workflows
 
-  @test_yaml_path "lib/resumai_ex/workflows/test.yaml"
+  @test_yaml_path "test/fixtures/workflows/test.yaml"
 
   describe("load_and_build/0") do
     test("load_and_build/0 is defined") do
@@ -29,8 +29,18 @@ defmodule ResumaiEx.WorkflowsTest do
       assert result == [
                %{
                  "workflow" => %{
-                   "name" => "Home",
-                   "screens" => %{"screen" => %{"name" => "Home"}}
+                   "name" => "test",
+                   "screens" => %{
+                     "screen" => %{
+                       "name" => "test",
+                       "id" => 1,
+                       "next" => nil,
+                       "previous" => nil,
+                       "title" => "test"
+                     }
+                   },
+                   "id" => 1,
+                   "title" => "Test"
                  }
                }
              ]

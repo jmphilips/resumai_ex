@@ -14,7 +14,7 @@ defmodule ResumaiEx.FileUtilsTest do
       assert output ==
                {:ok,
                 [
-                  "/Users/bender/bender/software/source/resumai_ex/lib/resumai_ex/workflows/test.yaml"
+                  "/Users/bender/bender/software/source/resumai_ex/lib/resumai_ex/workflows/home.yaml"
                 ]}
     end
   end
