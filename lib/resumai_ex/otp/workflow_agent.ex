@@ -5,7 +5,7 @@ defmodule ResumaiEx.Otp.WorkflowAgent do
   @doc """
   Starts the Agent responsible for storing workflows in memory.
   """
-  def start_link() do
+  def start_link(:ok) do
     with {:ok, initial_values} <- Workflows.load_and_build() do
       Agent.start_link(fn -> initial_values end, name: __MODULE__)
     end
@@ -24,8 +24,17 @@ defmodule ResumaiEx.Otp.WorkflowAgent do
   def find_by_name(name) do
     Agent.get(__MODULE__, fn workflows ->
       case Workflows.find_by_name(workflows, name) do
-        {:ok, workflow} -> workflow
-        {:error, error} -> error
+        {:ok, workflow} -> {:ok, workflow}
+        {:error, error} -> {:error, error}
+      end
+    end)
+  end
+
+  def find_by_id(id) do
+    Agent.get(__MODULE__, fn workflows ->
+      case Workflows.find_by_id(workflows, id) do
+        {:ok, workflow} -> {:ok, workflow}
+        {:error, error} -> {:error, error}
       end
     end)
   end

@@ -29,8 +29,15 @@ defmodule ResumaiEx.Workflows do
 
   @spec find_by_name([%Workflow{}], String.t()) :: {:ok, %Workflow{}} | {:error, String.t()}
   def find_by_name(workflows, name) do
-    case Enum.find(workflows, fn workflow -> workflow["workflow"]["name"] == name end) do
+    case Enum.find(workflows, fn workflow -> workflow.name == name end) do
       nil -> {:error, "Workflow with name: #{name} found"}
+      workflow -> {:ok, workflow}
+    end
+  end
+
+  def find_by_id(workflows, id) do
+    case Enum.find(workflows, fn workflow -> workflow.id == id end) do
+      nil -> {:error, "Workflow with id: #{id} found"}
       workflow -> {:ok, workflow}
     end
   end

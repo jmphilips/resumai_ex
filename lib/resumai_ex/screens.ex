@@ -1,7 +1,11 @@
 defmodule ResumaiEx.Screens do
-  alias ResumaiEx.Screen
+  @moduledoc """
+  Module for Screens
+  """
 
-  def home() do
-    Screen.build("Home")
+  alias ResumaiEx.{Screen}
+
+  def build_from_yaml_files(screens) do
+    {:ok, screens |> Enum.map(&Screen.build_from_yaml/1)}
   end
 end

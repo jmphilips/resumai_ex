@@ -22,4 +22,25 @@ defmodule ResumaiEx.ScreenTest do
     {_status, result} = Screen.build(@new_screen)
     assert result = %Screen{id: 1, name: "New Screen"}
   end
+
+  describe("build_from_yaml/1") do
+    @yaml %{
+      "screen" => %{
+        "name" => "test",
+        "id" => 1,
+        "title" => "test"
+      }
+    }
+
+    test("takes a map as an argument and returns a %Screen{}") do
+      output = Screen.build_from_yaml(@yaml)
+
+      assert output ==
+               %Screen{
+                 name: "test",
+                 id: 1,
+                 title: "test"
+               }
+    end
+  end
 end

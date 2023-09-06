@@ -26,7 +26,8 @@ defmodule ResumeaiExWeb.Schema do
 
     @desc "Find a workflow"
     field :workflow, :workflow do
-      arg(:name, non_null(:string))
+      arg(:name, :string)
+      arg(:id, :integer)
       resolve(&Resolvers.Workflow.find/3)
     end
   end

@@ -21,7 +21,8 @@ defmodule ResumaiEx.Application do
       # Start a worker by calling: ResumaiEx.Worker.start_link(arg)
       # {ResumaiEx.Worker, arg}
       {ResumaiEx.Otp.TokenAgent, 0},
-      {ResumaiEx.Otp.UserAgent, []}
+      {ResumaiEx.Otp.UserAgent, []},
+      {ResumaiEx.Otp.WorkflowAgent, :ok}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
